@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Katalog Film</string>
+    <string name="title_item">Title</string>
+    <string name="date_item">Date</string>
+    <string name="description_item">Description</string>
+    <string name="image_item_view">Image item view</string>
+    <string name="movie">Movie</string>
+    <string name="tv_series">Tv Series</string>
+    <string name="image_detail">Image detail</string>
+    <string name="image_splashscreen">Image Splashscreen</string>
+    <string name="description_detail">Description :</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="category">Category</string>
+    <string name="favorite_button">Favorite Button</string>
+    <string name="reviews">Reviews</string>
+    <string name="author">Author</string>
+</resources>
