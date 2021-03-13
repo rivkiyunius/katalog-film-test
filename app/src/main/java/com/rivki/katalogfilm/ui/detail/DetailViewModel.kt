@@ -1,6 +1,5 @@
 package com.rivki.katalogfilm.ui.detail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -20,15 +19,13 @@ class DetailViewModel(private val repository: DataRepository) : BaseViewModel() 
     val favoriteStatus: LiveData<Boolean> get() = _favoriteStatus
 
     fun getMovie(movieId: Int) {
-        isLoading.postValue(true)
         viewModelScope.launch {
             when(val request = repository.getDetailMovie(movieId)){
                 is ResourceState.Success -> {
                     _movieDetail.postValue(request.result.results!!)
-                    isLoading.postValue(false)
                 }
                 is ResourceState.Error -> {
-                    errorResponse.postValue(request.error.toString())
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                 }
             }
         }
@@ -42,7 +39,7 @@ class DetailViewModel(private val repository: DataRepository) : BaseViewModel() 
                     _favoriteStatus.postValue(status)
                 }
                 is ResourceState.Error -> {
-
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                 }
             }
         }
@@ -55,7 +52,7 @@ class DetailViewModel(private val repository: DataRepository) : BaseViewModel() 
                     _listReview.postValue(request.result.results!!)
                 }
                 is ResourceState.Error -> {
-
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                 }
             }
         }
@@ -64,10 +61,10 @@ class DetailViewModel(private val repository: DataRepository) : BaseViewModel() 
     fun addFavorite(movie: MovieResponse){
         movie.isFavorite = true
         viewModelScope.launch {
-            when(val request = repository.addToFavorite(movie)){
+            when(repository.addToFavorite(movie)){
                 is ResourceState.Success -> {}
                 is ResourceState.Error -> {
-                    Log.d("ERROR", request.error.error?.msg.toString())
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                 }
             }
         }
@@ -75,10 +72,10 @@ class DetailViewModel(private val repository: DataRepository) : BaseViewModel() 
 
     fun deleteFavorite(movieResponse: MovieResponse){
         viewModelScope.launch {
-            when(val request = repository.deleteFavorite(movieResponse)){
+            when(repository.deleteFavorite(movieResponse)){
                 is ResourceState.Success -> {}
                 is ResourceState.Error -> {
-                    Log.d("ERROR", request.error.error?.msg.toString())
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                 }
             }
         }

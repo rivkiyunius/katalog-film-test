@@ -26,7 +26,7 @@ class MovieViewModel(private val repository: DataRepository) : BaseViewModel() {
                     isLoading.postValue(false)
                 }
                 is ResourceState.Error -> {
-                    errorResponse.postValue(request.error.toString())
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                     isLoading.postValue(false)
                 }
             }
@@ -42,7 +42,7 @@ class MovieViewModel(private val repository: DataRepository) : BaseViewModel() {
                     isLoading.postValue(false)
                 }
                 is ResourceState.Error -> {
-                    errorResponse.postValue(request.error.toString())
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                     isLoading.postValue(false)
                 }
             }
@@ -58,7 +58,7 @@ class MovieViewModel(private val repository: DataRepository) : BaseViewModel() {
                     isLoading.postValue(false)
                 }
                 is ResourceState.Error -> {
-                    errorResponse.postValue(request.error.toString())
+                    errorResponse.postValue("Terdapat kesalahan pada server")
                     isLoading.postValue(false)
                 }
             }

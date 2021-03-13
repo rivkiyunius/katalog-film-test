@@ -1,7 +1,6 @@
 package com.rivki.katalogfilm.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +21,7 @@ class DetailActivity : BaseActivity() {
         const val EXTRA_ID = "extra_id"
     }
 
-    private lateinit var detailBinding: ActivityDetailBinding
+    private val detailBinding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
     private val viewModel by viewModel<DetailViewModel>()
     private val diffCallback by inject<DiffCallback>()
     private val reviewAdapter by lazy { ReviewAdapter(diffCallback) }
@@ -33,7 +32,6 @@ class DetailActivity : BaseActivity() {
 
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_detail)
-        detailBinding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(detailBinding.root)
     }
 

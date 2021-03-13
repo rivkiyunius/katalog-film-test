@@ -131,4 +131,34 @@ class DetailViewModelTest: KoinTest {
             Mockito.verify(repository, times(1)).deleteFavorite(dataMovie)
         }
     }
+
+    @Test
+    fun `Should get review movies when success`() {
+        runBlocking {
+            val repository = declareMock<DataRepository> {
+                runBlocking {
+                    given(getReviewMovie(2885)).willReturn(FakeRepository.getDummyReviews())
+                }
+            }
+            viewModel.getReviewList(2885)
+            val data = viewModel.listReview.value
+            Mockito.verify(repository, times(1)).getReviewMovie(2885)
+            assertNotNull(data)
+        }
+    }
+
+    @Test
+    fun `Should get favorite movie status when status is failed`() {
+        runBlocking {
+            val repository = declareMock<DataRepository> {
+                runBlocking {
+                    given(getReviewMovie(5887)).willReturn(null)
+                }
+            }
+            viewModel.getReviewList(5887)
+            val data = viewModel.listReview.value
+            Mockito.verify(repository, times(1)).getReviewMovie(5887)
+            assertNull(data)
+        }
+    }
 }

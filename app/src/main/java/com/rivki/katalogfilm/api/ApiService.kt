@@ -3,7 +3,6 @@ package com.rivki.katalogfilm.api
 import com.rivki.katalogfilm.model.response.BaseResponse
 import com.rivki.katalogfilm.model.response.MovieResponse
 import com.rivki.katalogfilm.model.response.ReviewsResponse
-import com.rivki.katalogfilm.model.response.TvResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -28,12 +27,6 @@ interface ApiService {
         @Query("page") page: Int
     ): SuccessCallbackList<List<MovieResponse>>
 
-    @GET("tv/airing_today")
-    suspend fun getAiringTv(
-        @Query("language") language: String,
-        @Query("page") page: Int
-    ): SuccessCallbackList<List<TvResponse>>
-
     @GET("movie/{id}")
     suspend fun getDetailMovie(
         @Path("id") id: Int,
@@ -46,11 +39,6 @@ interface ApiService {
         @Query("language") language: String
     ): SuccessCallbackList<List<ReviewsResponse>>
 
-    @GET("tv/{id}")
-    suspend fun getDetailTv(
-        @Path("id") id: Int,
-        @Query("language") language: String
-    ): SuccessCallback<TvResponse>
 }
 
 typealias SuccessCallbackList<T> = Response<BaseResponse<T>>

@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rivki.katalogfilm.base.DiffCallback
 import com.rivki.katalogfilm.databinding.ItemViewReviewBinding
 import com.rivki.katalogfilm.model.response.ReviewsResponse
-import com.rivki.katalogfilm.utils.CommonUtils.showImage
 import com.rivki.katalogfilm.utils.CommonUtils.showImageReview
 
 class ReviewAdapter(private val diffCallback: DiffCallback = DiffCallback()) :

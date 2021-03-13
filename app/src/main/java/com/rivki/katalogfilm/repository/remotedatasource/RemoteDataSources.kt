@@ -49,9 +49,7 @@ class RemoteDataSources(private val apiService: ApiService): BaseDataSource() {
     suspend fun getPopularMovie(page: Int) = suspendDataResult { getResultList { apiService.getPopularMovie(LANGUAGE, page) } }
     suspend fun getTopRatedMovie(page: Int) = suspendDataResult { getResultList { apiService.getTopRatedMovie(LANGUAGE, page) } }
     suspend fun getReviewMovie(id: Int) = suspendDataResult { getResultList { apiService.getMovieReview(id, LANGUAGE) } }
-    suspend fun getAiringTvShow(page: Int) = suspendDataResult { getResultList { apiService.getAiringTv(LANGUAGE, page) } }
     suspend fun getDetalMovie(id: Int) = suspendDataResult { getResult { apiService.getDetailMovie(id, LANGUAGE)} }
-    suspend fun getDetailTv(id: Int) = suspendDataResult { getResult { apiService.getDetailTv(id, LANGUAGE) } }
 
     companion object {
         private const val NO_INTERNET = "Tidak ada koneksi internet"

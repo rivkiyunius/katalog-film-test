@@ -43,6 +43,7 @@ class HomeActivity : BaseActivity(), BottomSheetbarFragment.BottomSheetListener 
             vm.getMovieList()
             vm.nowPlayingMovie.observe(this) { movieAdapter.setMovie(it) }
             vm.observeLoading().observe(this) { showLoading(it) }
+            vm.observeError().observe(this){ showError(it) }
         }
     }
 
@@ -65,6 +66,7 @@ class HomeActivity : BaseActivity(), BottomSheetbarFragment.BottomSheetListener 
                     vm.getPopularMovie()
                     vm.popularMovie.observe(this) { movieAdapter.setMovie(it) }
                     vm.observeLoading().observe(this) { showLoading(it) }
+                    vm.observeError().observe(this){ showError(it) }
                 }
             }
             BottomSheetbarFragment.NOW_PLAYING -> {
@@ -72,6 +74,7 @@ class HomeActivity : BaseActivity(), BottomSheetbarFragment.BottomSheetListener 
                     vm.getMovieList()
                     vm.nowPlayingMovie.observe(this) { movieAdapter.setMovie(it) }
                     vm.observeLoading().observe(this) { showLoading(it) }
+                    vm.observeError().observe(this){ showError(it) }
                 }
             }
             BottomSheetbarFragment.TOP_RATED -> {
@@ -79,7 +82,17 @@ class HomeActivity : BaseActivity(), BottomSheetbarFragment.BottomSheetListener 
                     vm.getTopRatedMovie()
                     vm.topRatedMovie.observe(this) { movieAdapter.setMovie(it) }
                     vm.observeLoading().observe(this) { showLoading(it) }
+                    vm.observeError().observe(this){ showError(it) }
                 }
+            }
+        }
+    }
+
+    private fun showError(error: String){
+        if(!error.isEmpty()){
+            with(homeBinding){
+                rvMovie.visibility = View.GONE
+                tvError.visibility = View.VISIBLE
             }
         }
     }

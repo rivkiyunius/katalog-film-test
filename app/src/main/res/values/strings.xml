@@ -16,4 +16,5 @@
     <string name="favorite_button">Favorite Button</string>
     <string name="reviews">Reviews</string>
     <string name="author">Author</string>
+    <string name="favorite">Favorite</string>
 </resources>

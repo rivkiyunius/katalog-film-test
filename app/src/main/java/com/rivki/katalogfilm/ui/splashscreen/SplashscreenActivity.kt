@@ -1,11 +1,9 @@
 package com.rivki.katalogfilm.ui.splashscreen
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.WindowInsets
 import android.view.WindowManager
 import com.rivki.katalogfilm.R
 import com.rivki.katalogfilm.base.BaseActivity

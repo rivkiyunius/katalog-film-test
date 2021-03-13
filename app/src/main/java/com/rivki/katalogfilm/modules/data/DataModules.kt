@@ -1,7 +1,6 @@
 package com.rivki.katalogfilm.modules.data
 
 import com.rivki.katalogfilm.di.BaseModule
-import com.rivki.katalogfilm.modules.room.RoomModules
 import com.rivki.katalogfilm.repository.DataRepository
 import com.rivki.katalogfilm.repository.localdatasource.LocalDataSource
 import com.rivki.katalogfilm.repository.remotedatasource.RemoteDataSources

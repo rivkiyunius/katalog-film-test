@@ -12,7 +12,6 @@ import kotlinx.coroutines.test.setMain
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
-import org.koin.core.logger.Level
 import org.koin.test.KoinTest
 import org.koin.test.KoinTestRule
 import org.koin.test.inject
